@@ -3,7 +3,7 @@ This is a start up exercise of Quarkus.
 
 ## Tests
 In order to run all the tests:
-Run `mvn clean test integration-test`. Note that this will truncate tables in the database.
+Run `mvn clean test integration-test`.
 
 # Quarkus without Docker
 How to run the application:
