@@ -31,7 +31,7 @@ public class Labseq {
 
     private BigInteger computeAndCache(int n){
         BigInteger result = null;
-        if (hasCache(n - 4)){
+        if (hasCache(n - 3)){
             result = compute(n);
         }else {
             for (int i = cached.size(); i <= n; i++) {
