@@ -11,3 +11,7 @@ How to run the application:
 
 Open the front-end page in a browser:
 `frontend/labseqPage.html`
+
+
+# API documentation
+swagger-ui: `http://localhost:8080/q/swagger-ui/`

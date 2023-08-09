@@ -29,7 +29,7 @@ public class LabseqResource {
     @APIResponses(value = {
             @APIResponse(responseCode = "200", description = "Labseq value computed successfully",
                     content = @Content(mediaType = "application/json", schema = @Schema(implementation = LabsqeDTO.class))),
-            @APIResponse(responseCode = "400", description = "Bad Request, the given index is. ",
+            @APIResponse(responseCode = "400", description = "Bad Request, the given index is invalid. ",
                     content = @Content(mediaType = "application/json"))
     })
     public Response computeLabseq(@PathParam("n") @NotNull @Parameter(description = "The index of the sequence’s (single) value to return") final Integer n) {
