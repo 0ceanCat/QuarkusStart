@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .center {
+            position: relative;
+            text-align: center;
+            vertical-align: middle;
+            top: 200px;
+        }
+
+        input {
+            text-align: center;
+        }
+    </style>
+    <title>Labseq</title>
+</head>
+<body>
+
+<div class="center">
+    <label for="index"></label>
+    <input type="number" name="quantity" id="index" pattern="[0-9]*">
+    <button type="button" id="submit">compute</button>
+    <div>
+        <h5>Computed Value:</h5><span id="value"></span>
+    </div>
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const url = "http://localhost:8080/desafio/labseq/"
+
+    function splitStringIntoLines(inputString, charactersPerLine) {
+        let result = '';
+        for (let i = 0; i < inputString.length; i += charactersPerLine) {
+            result += inputString.slice(i, i + charactersPerLine) + '\n';
+        }
+        return result;
+    }
+
+    $("#submit").click(function (){
+        let index = $("#index").val();
+        $.ajax({
+            url: url + index,
+            type:"GET",
+            success:function(data){
+                $("#value").html(splitStringIntoLines(data['result'], 100));
+            },
+            error:function(){
+                console.log("There was a problem with the request.");
+            }
+        });
+    })
+</script>
+</html>
