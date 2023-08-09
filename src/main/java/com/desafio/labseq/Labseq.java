@@ -2,22 +2,23 @@ package com.desafio.labseq;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
 public class Labseq {
-    private final List<Integer> cached = new ArrayList<>();
+    private final List<BigInteger> cached = new ArrayList<>();
 
     {
-        cached.add(0);
-        cached.add(1);
-        cached.add(0);
-        cached.add(1);
+        cached.add(BigInteger.ZERO);
+        cached.add(BigInteger.ONE);
+        cached.add(BigInteger.ZERO);
+        cached.add(BigInteger.ONE);
     }
 
-    public int getLabsqeValue(int n){
-        int result;
+    public BigInteger getLabsqeValue(int n){
+        BigInteger result;
 
         if (hasCache(n)){
             result = cached.get(n);
@@ -28,8 +29,8 @@ public class Labseq {
         return result;
     }
 
-    private int computeAndCache(int n){
-        int result = 0;
+    private BigInteger computeAndCache(int n){
+        BigInteger result = null;
         if (hasCache(n - 4)){
             result = compute(n);
         }else {
@@ -41,12 +42,12 @@ public class Labseq {
         return result;
     }
 
-    private void cache(int v){
+    private void cache(BigInteger v){
         cached.add(v);
     }
 
-    private int compute(int n) {
-        return cached.get(n - 4) + cached.get(n - 3);
+    private BigInteger compute(int n) {
+        return cached.get(n - 4).add(cached.get(n - 3));
     }
 
     private boolean hasCache(int n){
