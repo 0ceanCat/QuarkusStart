@@ -9,6 +9,13 @@ Run `mvn clean test integration-test`. Note that this will truncate tables in th
 How to run the application:
 `./mvnw compile quarkus:dev`
 
+# Quarkus with Docker
+Inside the project:
+Run `docker build -f src/main/Docker/Dockerfile.jvm -t desafio/labseq .`
+
+Run `docker run -i --rm -p 8080:8080 desafio/labseq`
+
+# How to interact with backend
 Open the front-end page in a browser:
 `frontend/labseqPage.html`
 
